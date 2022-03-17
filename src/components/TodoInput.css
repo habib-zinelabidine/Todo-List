@@ -1,0 +1,8 @@
+.card input{
+    background-color: transparent;
+    width: 100%;
+    font-size: 1.2rem;
+    color: white;
+    border: hidden;
+    outline: none;
+}
