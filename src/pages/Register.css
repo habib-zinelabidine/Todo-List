@@ -14,7 +14,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    height: 60%;
+    height: 70%;
     width: 70%;
 }
 .rg-first{
@@ -23,7 +23,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-radius:  0 20px 20px 0; 
-    
+    background-position: center;
 }
 .rg-second{
     display: flex;
@@ -31,8 +31,9 @@
     background-color: white;
     width: 50%;
     align-items: center;
-    padding: 40px;
+    padding-top: 100px;
     border-radius: 20px 0 0 20px;
+    
 }
 
 .rg-second h1{
@@ -51,7 +52,7 @@
 }
 .rg-container button{
     width: 40%;
-    background-color:#505050 ;
+    background-color:#25273c ;
     margin-top: 20px;
     border-radius: 20px;
     padding: 10px;
