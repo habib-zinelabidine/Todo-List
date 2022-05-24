@@ -1,8 +1,6 @@
 {
-  "name": "todo-tasks",
-  "version": "0.1.0",
-  "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -58,5 +56,8 @@
   "homepage": "https://github.com/habib-zinelabidine/Todo-List#readme",
   "devDependencies": {
     "nodemon": "^2.0.15"
+=======
+    "react-redirect": "^1.0.0"
+>>>>>>> b2fa
   }
 }
