@@ -6,9 +6,9 @@ import '../components/Todo.css'
 const list = [
   {id : "1" , text : "Complete online JavaScript course" , isComplete : true},
   {id : "2" , text : "Jog around the park", isComplete : false},
-  {id : "3" , text : "10 minutes mediatation", isComplete : false},
+  {id : "3" , text : "1 hour at the gym", isComplete : false},
   {id : "4" , text : "Read for an hour", isComplete : false},
-  {id : "5" , text : "Pick up groceries", isComplete : false},
+  {id : "5" , text : "Learn React", isComplete : false},
   {id : "6" , text : "Complete Todo app", isComplete : false}
 
 ]

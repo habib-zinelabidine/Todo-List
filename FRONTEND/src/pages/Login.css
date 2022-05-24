@@ -40,24 +40,25 @@
     margin-bottom: 30px;
     
 }
-.container input{
+
+.second input{
     margin: 20px;
     padding: 10px;
     text-align: center;
     border-radius: 10px;
     background-color: transparent;
     border: 1px solid gray;
-    width: 60%;
-    color: white;
+    color: black;
+    width: 70%;
 }
-.container button{
-    width: 40%;
+.second button{
     background-color:#25273c ;
     margin-top: 20px;
     border-radius: 20px;
     padding: 10px;
     font-size: 1rem;
     color: white;
+    width: 50%;
 }
 .second a{
     text-decoration: none;

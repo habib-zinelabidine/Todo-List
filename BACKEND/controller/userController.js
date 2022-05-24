@@ -21,7 +21,7 @@ const signupUser=async (req,res)=>{
     console.log(emailExist)
     if(emailExist){
         
-        return res.status(400).send("Email already exist");
+        return res.status(400).send({message :"Email already exist"});
     }
     //hash password
 
@@ -31,7 +31,6 @@ const signupUser=async (req,res)=>{
 
     const {email,password}=req.body;
     try {
-        console.log("testx")
         const user = await User.create({email,password : hashedpassword});
         const token = generatetoken({id:user._id},"24h");
         const refreshToken = generatetoken({id:user._id},"8d"); 
@@ -43,12 +42,11 @@ const signupUser=async (req,res)=>{
         }
         res.status(200).json(result);
     } catch (error) {
-        return res.status(400).json("test");
+        return res.status(400).json(result);
         
     }
     
-
-
+    
 
 }
 
