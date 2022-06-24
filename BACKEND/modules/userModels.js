@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const userScheme = new mongoose.Schema({
     email : {type:String,required:true,unique:true},
     password : {type:String,required:true,minlength:6},
-    date:{type:Date,default:Date.now}
+    date:{type:Date,default:Date.now},
+    todos : [{type:mongoose.Types.ObjectId,required:true,ref:'Todo'}]
 })
 
 module.exports = mongoose.model("User",userScheme);

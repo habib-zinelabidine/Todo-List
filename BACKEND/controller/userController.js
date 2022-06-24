@@ -13,7 +13,7 @@ const signupUser=async (req,res)=>{
 
     const {error} = joi.validate(req.body,Schema);
     if(error){
-        return res.status(400).send(error.details[0].message);
+        return res.status(400).json({message : error.details[0].message});
     }
     //unique email
 
@@ -30,19 +30,16 @@ const signupUser=async (req,res)=>{
 
 
     const {email,password}=req.body;
+    const createUser = new User({
+        email,
+        password : hashedpassword,
+        todos : []
+    })
     try {
-        const user = await User.create({email,password : hashedpassword});
-        const token = generatetoken({id:user._id},"24h");
-        const refreshToken = generatetoken({id:user._id},"8d"); 
-        const result = {
-            "id" : user._id,
-            "email" : user.email,
-            "token" : token,
-            "refreshToken" : refreshToken
-        }
-        res.status(200).json(result);
+        await createUser.save();
+        res.status(200).json({createUser});
     } catch (error) {
-        return res.status(400).json(result);
+        return res.status(500).json({message : 'Something went wrong, please try again'});
         
     }
     
@@ -77,6 +74,15 @@ const loginUser = async (req,res)=>{
     res.status(200).json(result);
 
 
+}
+exports.getUsers = async (req,res)=>{
+    
+    try {
+        const user = await User.find().populate('todos');
+        res.status(200).json({users : user});
+    } catch (error) {
+        res.status(500).json({message : 'Something went wrong, please try again'});
+    }
 }
 
 exports.signupUser = signupUser ;

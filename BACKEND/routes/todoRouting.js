@@ -5,6 +5,11 @@ const {authMiddleware} = require('../middleware/token');
 
 const router=Router();
 
-router.route('/').post(authMiddleware, todoController.createTodo).get(authMiddleware, todoController.getAll);
+router.get('/', todoController.getAll);
+router.get('/:tid',todoController.getById);
+router.get('/users/:uid',todoController.getTodoByUserId);
+router.post('/', todoController.createTodo);
+router.patch('/:tid',todoController.updateTodo);
+router.delete('/:tid',todoController.deleteTodo);
 
 module.exports = router;

@@ -19,7 +19,7 @@ const expireToken = (token) => {
 };
 
 module.exports.authMiddleware =async (req, res, next) => {
-  console.log(req.headers);
+  /* console.log(req.headers);
   const { authorization } = req.headers;
   if (!authorization)
     return res.status(403).json({ message: "please sign in" });
@@ -35,7 +35,7 @@ module.exports.authMiddleware =async (req, res, next) => {
   } catch (error) {
     console.log(error);
    return  res.status(403).json({ message: "please sign in" });
-  }
+  } */
 
  
 };

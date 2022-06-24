@@ -8,32 +8,17 @@ const userRouting = require('./routes/userRouting');
 const todoRouting = require('./routes/todoRouting');
 const app = express();
 
-const list = [
-    {id : "1" , text : "Complete online JavaScript coursedqsdqsdqsd" , isComplete : true},
-    {id : "2" , text : "Jog around the park", isComplete : false},
-    {id : "3" , text : "10 minutes mediatation", isComplete : false},
-    {id : "4" , text : "Read for an hour", isComplete : false},
-    {id : "5" , text : "Pick up groceries", isComplete : false},
-    {id : "6" , text : "Complete Todo app", isComplete : false}
-  
-  ]
 
-const Port = process.env.Port || 4000 ;
+const Port = process.env.Port || 5000 ;
 app.use(cors())
 app.use(morgan('dev'));
 app.use(bodyparser.json());
 
-app.use(userRouting);
+app.use('/',userRouting);
 app.use('/todos', todoRouting);
 
-app.get("/list",(req,res)=>{
-    res.json(list)
-})
 
-
-
-
-mongoose.connect(process.env.DB_Connect)
+mongoose.connect("mongodb+srv://habib:oJWVPeGaWDC7DawU@cluster0.phbc6.mongodb.net/todo-app?retryWrites=true&w=majority")
 .then(() =>{console.log('Connected To MongoDB')})
 .catch(error=>{console.log(error.message)});
 

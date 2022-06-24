@@ -1,4 +1,5 @@
-import React,{ useState } from 'react'
+import React,{ useState,useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import TodoInput from '../components/TodoInput'
 import TodoList from '../components/TodoList'
 import '../components/Todo.css'
@@ -16,6 +17,8 @@ const list = [
 const Todo = () => {
 
   const [todolist,settodolist] = useState(list)
+  const [error,seterror] = useState();
+  const [loadedTodos,setloaddedTodos] = useState();
 
   const AddNewList = (todoValue) =>{
     var list = {id : Math.random() , text : todoValue}
@@ -42,6 +45,21 @@ const completedtodo = id =>{
 const clearcompleted = ()=>{
   settodolist(todolist.filter((f)=> f.isComplete === false))
 }
+const userId = useParams().userId;
+
+useEffect(()=>{
+  const sendRequest = async ()=>{
+    try {
+      const response = await fetch('http://localhost:5000/todos');
+      const responseData = await response.json();
+      setloaddedTodos(responseData.data);
+    } catch (error) {
+      seterror(error.message);
+    }
+
+  };
+  sendRequest();
+},[])
 
   return (
     <div className="app-dark">
@@ -53,7 +71,8 @@ const clearcompleted = ()=>{
             <TodoInput Add={AddNewList} />
         </div>
         <div className="todolist">
-          <TodoList  todolist={todolist} Delete={Delete} completedtodo={completedtodo} clearcompleted={clearcompleted}/>
+          {loadedTodos && <TodoList todolist={loadedTodos}/>}
+          {/* <TodoList  todolist={todolist} Delete={Delete} completedtodo={completedtodo} clearcompleted={clearcompleted}/> */}
         </div>
       
   </div>

@@ -44,7 +44,6 @@ const Register = () => {
               placeholder="UserEmail"
               required
               ></input>
-              { error?.response?.data &&  <small style={{color: "red"}}>{error.response.data.message}</small>}
               <input 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -52,6 +51,7 @@ const Register = () => {
               placeholder="Password"
               required
               ></input>
+              {error?.response?.data &&  <small style={{color: "red"}}>{error.response.data.message}</small>}
               
               <Link to='/Login'>Login</Link>
               <button type='submit'>Sign up</button>
