@@ -50,16 +50,16 @@ const userId = useParams().userId;
 useEffect(()=>{
   const sendRequest = async ()=>{
     try {
-      const response = await fetch('http://localhost:5000/todos');
+      const response = await fetch(`http://localhost:5000/todos/users/${userId}`);
       const responseData = await response.json();
-      setloaddedTodos(responseData.data);
+      setloaddedTodos(responseData.todos);
     } catch (error) {
       seterror(error.message);
     }
 
   };
   sendRequest();
-},[])
+},[loadedTodos,userId]);
 
   return (
     <div className="app-dark">
