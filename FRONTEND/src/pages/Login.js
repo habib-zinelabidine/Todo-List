@@ -15,11 +15,8 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [userId,setuserId] = useState(null)
   const {fetchData, loading, error} = useAxios();
-  let userId;
-  userId = useParams().userId;
-
 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
@@ -29,9 +26,9 @@ const Login = () => {
 
     if(response) {
       const {data} = response;
+      setuserId(data.id);
     usercontext.login({token: data.token, user: {id: data.id, email: data.email}}) 
-    userId = data.id;
-    console.log(userId);
+    
   };
       
   }
@@ -39,7 +36,7 @@ const Login = () => {
   useEffect(() => {
     
     if(usercontext.loggedin) navigate(`/accueil/${userId}`);
-  }, [usercontext.loggedin]);
+  }, [usercontext.loggedin,userId]);
 
   
   return (

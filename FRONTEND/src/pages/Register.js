@@ -12,6 +12,7 @@ const Register = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userId,setuserId] = useState(null);
 
   const {fetchData, loading, error} = useAxios();
 
@@ -22,14 +23,15 @@ const Register = () => {
 
     if(response){
       const {data} = response;
+      setuserId(data.id);
     usercontext.login({token: data.token, user: {id: data.id, email: data.email}})    };
     } 
 
   
   
   useEffect(() => {
-    if(usercontext.loggedin) navigate('/accueil');
-  }, [usercontext.loggedin]);
+    if(usercontext.loggedin) navigate(`/accueil/${userId}`);
+  }, [usercontext.loggedin,userId]);
  
   return (
     <div className='bg'>

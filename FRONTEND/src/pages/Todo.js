@@ -25,7 +25,8 @@ const Todo = () => {
     settodolist ([...todolist,list])
 
 }
-const Delete = (id)=>{
+const Delete = async (id)=>{
+  const response = await fetch('/')
     if (window.confirm('Are you sure you want to delete ?')){
         settodolist(todolist.filter((f)=> f.id !== id))
         
@@ -59,7 +60,7 @@ useEffect(()=>{
 
   };
   sendRequest();
-},[loadedTodos,userId]);
+},[]);
 
   return (
     <div className="app-dark">
